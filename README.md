@@ -15,18 +15,21 @@ You can install `utils-three-js` using npm:
 ## Usage
 
 import { BufferGeoUtils } from 'utils-three-js';
+
 import * as THREE from 'three';
 
 // Create a BufferGeometry
+
 const geometry = new THREE.BoxGeometry();
 
 // Check if the geometry is a BufferGeometry
+
 if (BufferGeoUtils.isBufferGeometry(geometry)) {
     // Perform operations on the geometry
     const positionArray = BufferGeoUtils.getPositionArray(geometry);
-    const normalArray = BufferGeoUtils.getNormalArray(geometry);
-    const uvArray = BufferGeoUtils.getUVArray(geometry);
-    const facePoints = BufferGeoUtils.getFacePoints(geometry,10)
+    const normalArray   = BufferGeoUtils.getNormalArray(geometry);
+    const uvArray       = BufferGeoUtils.getUVArray(geometry);
+    const facePoints    = BufferGeoUtils.getFacePoints(geometry,10)
     // ...and more
 }
 
