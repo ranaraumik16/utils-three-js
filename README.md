@@ -49,7 +49,3 @@ if (BufferGeoUtils.isBufferGeometry(geometry)) {
 ## License
 
 This project is licensed under the MIT License.
-
-## Keywords
-
-three.js, buffergeometry, geometry, utils, utility, lib
