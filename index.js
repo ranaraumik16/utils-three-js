@@ -246,6 +246,45 @@ class Object3DUtils {
 
         return meshes;
     }
+
+    static unGroupAllMeshes(object) {
+        /**
+         * @param {THREE.Object3D}
+         * @returns {Array[THREE.Mesh]}
+         * @returns {Array[]} if the object is not instance of THREE.Object3D
+         * @description Returns all meshes of the object with un grouping them
+         * @warning This function may not work properly if the object is non-uniformly scaled
+         * 
+         */
+
+        if (!Object3DUtils.isObject(object)) return [];
+
+        let meshes = Object3DUtils.getAllMeshes(object);
+
+        if (object.parent !== null) {
+            meshes.forEach((mesh) => {
+                object.parent.attach(mesh);
+            });
+            object.parent.remove(object);
+        } else {
+            console.warn("object is not attached to any parent");
+            let dummyParent = new THREE.Object3D();
+            dummyParent.add(object);
+
+            meshes.forEach((mesh) => {
+                object.parent.attach(mesh);
+            });
+
+            // Remove from dummy parent
+            dummyParent.remove(object);
+            meshes.forEach((mesh) => {
+                dummyParent.remove(mesh);
+            })
+
+        }
+        return meshes;
+
+    }
 }
 
 export { BufferGeoUtils, Object3DUtils };

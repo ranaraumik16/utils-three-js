@@ -1,6 +1,6 @@
 {
   "name": "utils-three-js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "This module helps to build three-js application",
   "type": "module",
   "main": "index.js",

@@ -57,6 +57,7 @@ const facePoints    = BufferGeoUtils.getFacePoints(geometry,10)
 | `isObject`               | Checks if the given object is an instance of THREE.Object3D.         | `object` (THREE.Object3D)                  | `Boolean`                |
 | `isMesh`                 | Checks if the given object is an instance of THREE.Mesh.             | `object` (THREE.Object3D)                  | `Boolean`                |
 | `getAllMeshes`           | Returns all meshes of the given object.                              | `object` (THREE.Object3D)                  | `Array[THREE.Mesh]`      |
+| `unGroupAllMeshes`       | Un-groups all meshes of the given object.(Scaling may not work)      | `object` (THREE.Object3D)                  | `Array[THREE.Mesh]`      |
 ## License
 
 This project is licensed under the MIT License.
