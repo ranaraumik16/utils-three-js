@@ -197,4 +197,55 @@ class BufferGeoUtils {
     }
 }
 
-export { BufferGeoUtils };
+class Object3DUtils {
+    static throwError(message) {
+        throw new Error(message);
+    }
+
+    static isObject(object) {
+        /**
+         * @param {THREE.Object3D} object
+         * @returns {Boolean}
+         * @description Returns true if the object is an object
+         */
+
+        if (object === undefined) return false;
+
+        return object instanceof THREE.Object3D;
+    }
+
+    static isMesh(object) {
+        /**
+         * @param {THREE.Object3D} object
+         * @returns {Boolean}
+         * @description Returns true if the object is a mesh
+         */
+
+        if (object === undefined) return false;
+
+        return object instanceof THREE.Mesh;
+    }
+
+    static getAllMeshes(object) {
+        /**
+         * @param {THREE.Object3D} object
+         * @returns {Array[THREE.Mesh]}
+         * @returns {Array[]} if the object is not instance of THREE.Object3D
+         * @description Returns all meshes of the object
+        */
+
+        if (!Object3DUtils.isObject(object)) return [];
+
+        let meshes = [];
+
+        object.traverse((child) => {
+            if (Object3DUtils.isMesh(child)) {
+                meshes.push(child);
+            }
+        });
+
+        return meshes;
+    }
+}
+
+export { BufferGeoUtils, Object3DUtils };

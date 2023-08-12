@@ -51,6 +51,12 @@ const facePoints    = BufferGeoUtils.getFacePoints(geometry,10)
 | `getFacePointIndices`    | Returns the indices of the points of the face at the given index.    | `geometry` (THREE.BufferGeometry), `faceIndex` (Number) | `Array[Number]`           |
 | `getFacePoints`          | Returns the points of the face at the given index.                   | `geometry` (THREE.BufferGeometry), `faceIndex` (Number) | `Array[THREE.Vector3]`    |
 
+`Object3DUtils`
+| Method                   | Description                                                          | Parameters                                 | Returns                   |
+|--------------------------|----------------------------------------------------------------------|--------------------------------------------|--------------------------|
+| `isObject`               | Checks if the given object is an instance of THREE.Object3D.         | `object` (THREE.Object3D)                  | `Boolean`                |
+| `isMesh`                 | Checks if the given object is an instance of THREE.Mesh.             | `object` (THREE.Object3D)                  | `Boolean`                |
+| `getAllMeshes`           | Returns all meshes of the given object.                              | `object` (THREE.Object3D)                  | `Array[THREE.Mesh]`      |
 ## License
 
 This project is licensed under the MIT License.
