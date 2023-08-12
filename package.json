@@ -1,0 +1,16 @@
+{
+  "name": "utils-three-js",
+  "version": "1.0.0",
+  "description": "This module helps to build three-js application",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Raumik Rana",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.155.0"
+  }
+}
