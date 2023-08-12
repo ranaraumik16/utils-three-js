@@ -22,16 +22,18 @@ import * as THREE from 'three';
 
 const geometry = new THREE.BoxGeometry();
 
-// Check if the geometry is a BufferGeometry
 
-if (BufferGeoUtils.isBufferGeometry(geometry)) {
-    // Perform operations on the geometry
-    const positionArray = BufferGeoUtils.getPositionArray(geometry);
-    const normalArray   = BufferGeoUtils.getNormalArray(geometry);
-    const uvArray       = BufferGeoUtils.getUVArray(geometry);
-    const facePoints    = BufferGeoUtils.getFacePoints(geometry,10)
-    // ...and more
-}
+// Perform operations on the geometry
+
+const positionArray = BufferGeoUtils.getPositionArray(geometry);
+
+const normalArray   = BufferGeoUtils.getNormalArray(geometry);
+
+const uvArray       = BufferGeoUtils.getUVArray(geometry);
+
+const facePoints    = BufferGeoUtils.getFacePoints(geometry,10)
+
+// ...and more
 
 ## API Documentation
 `BufferGeoUtils`
