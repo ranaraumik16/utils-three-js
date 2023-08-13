@@ -151,7 +151,7 @@ class BufferGeoUtils {
         /**
          * @param {THREE.BufferGeometry}
          * @param {Number} faceIndex
-         * @returns {Array[Number]}
+         * @returns {Array<Number>}
          * @description Returns the indices of the points of the face at the given index
          * @throws {Error} if the geometry is not a buffer geometry
          * @throws {Error} if the index is out of range
@@ -177,7 +177,7 @@ class BufferGeoUtils {
         /**
          * @param {THREE.BufferGeometry}
          * @param {Number} faceIndex
-         * @returns {Array[THREE.Vector3]}
+         * @returns {Array<THREE.Vector3>}
          * @description Returns the points of the face at the given index
          * @throws {Error} if the geometry is not a buffer geometry
          * @throws {Error} if the index is out of range
@@ -229,8 +229,8 @@ class Object3DUtils {
     static getAllMeshes(object) {
         /**
          * @param {THREE.Object3D} object
-         * @returns {Array[THREE.Mesh]}
-         * @returns {Array[]} if the object is not instance of THREE.Object3D
+         * @returns {Array<THREE.Mesh>}
+         * @returns {Array} if the object is not instance of THREE.Object3D
          * @description Returns all meshes of the object
         */
 
@@ -250,8 +250,8 @@ class Object3DUtils {
     static unGroupAllMeshes(object) {
         /**
          * @param {THREE.Object3D}
-         * @returns {Array[THREE.Mesh]}
-         * @returns {Array[]} if the object is not instance of THREE.Object3D
+         * @returns {Array<THREE.Mesh>}
+         * @returns {Array} if the object is not instance of THREE.Object3D
          * @description Returns all meshes of the object with un grouping them
          * @warning This function may not work properly if the object is non-uniformly scaled
          * 
@@ -284,6 +284,29 @@ class Object3DUtils {
         }
         return meshes;
 
+    }
+
+    static getBoundingBox(object, inLocalSpace = false) {
+        /**
+         * @param {THREE.Object3D} object
+         * @param {Boolean} inWorldSpace
+         * @returns {THREE.Box3}
+         * @description Returns the bounding box of the object
+         * @throws {Error} if the object is not an instance of THREE.Object3D
+         */
+
+        if (!Object3DUtils.isObject(object)) this.throwError('Not an object');
+        object.updateWorldMatrix(true, true);
+        let boundingBox = new THREE.Box3();
+
+        boundingBox.setFromObject(object);
+
+        if (inLocalSpace && object.parent !== null) {
+            let matrix = object.parent.matrixWorld.clone();
+            matrix.invert();
+            boundingBox.applyMatrix4(matrix);
+        }
+        return boundingBox;
     }
 }
 
