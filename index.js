@@ -308,6 +308,23 @@ class Object3DUtils {
         }
         return boundingBox;
     }
+
+    static getClassInstanceObjects(object, objectClass) { 
+        /**
+         * @param {THREE.Object3D} object
+         * @param {any} objectClass
+         * @returns {Array<objectClass>}
+         * @description Returns all objects of the object with the given class
+         * @throws {Error} if the object is not an instance of THREE.Object3D
+         */
+        let objects = [];
+        object.traverse((child) => {
+            if (child instanceof objectClass) {
+                objects.push(child);
+            }
+        });
+        return objects;
+    }
 }
 
 export { BufferGeoUtils, Object3DUtils };
