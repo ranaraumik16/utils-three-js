@@ -211,7 +211,7 @@ class Object3DUtils {
 
         if (object === undefined) return false;
 
-        return object instanceof THREE.Object3D;
+        return object.isObject3D;
     }
 
     static isMesh(object) {
@@ -223,7 +223,7 @@ class Object3DUtils {
 
         if (object === undefined) return false;
 
-        return object instanceof THREE.Mesh;
+        return object.isMesh;
     }
 
     static getAllMeshes(object) {
@@ -234,12 +234,12 @@ class Object3DUtils {
          * @description Returns all meshes of the object
         */
 
-        if (!Object3DUtils.isObject(object)) return [];
+        if (!object.isObject3D) return [];
 
         let meshes = [];
 
         object.traverse((child) => {
-            if (Object3DUtils.isMesh(child)) {
+            if (child.isMesh) {
                 meshes.push(child);
             }
         });
@@ -257,7 +257,7 @@ class Object3DUtils {
          * 
          */
 
-        if (!Object3DUtils.isObject(object)) return [];
+        if (!object.isObject3D) return [];
 
         let meshes = Object3DUtils.getAllMeshes(object);
 
@@ -295,7 +295,7 @@ class Object3DUtils {
          * @throws {Error} if the object is not an instance of THREE.Object3D
          */
 
-        if (!Object3DUtils.isObject(object)) this.throwError('Not an object');
+        if (!object.isObject3D) this.throwError('Not an object');
         object.updateWorldMatrix(true, true);
         let boundingBox = new THREE.Box3();
 
