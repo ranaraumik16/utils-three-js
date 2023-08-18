@@ -210,7 +210,8 @@ class Object3DUtils {
          */
 
         if (object === undefined) return false;
-        return object.constructor.name === THREE.Object3D.name;
+
+        return object instanceof THREE.Object3D;
     }
 
     static isMesh(object) {
@@ -221,7 +222,8 @@ class Object3DUtils {
          */
 
         if (object === undefined) return false;
-        return object.constructor.name === THREE.Mesh.name;
+
+        return object instanceof THREE.Mesh;
     }
 
     static getAllMeshes(object) {
