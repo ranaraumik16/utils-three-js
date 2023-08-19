@@ -247,12 +247,13 @@ class Object3DUtils {
         return meshes;
     }
 
-    static unGroupAllMeshes(object) {
+    static unGroupAllMeshes(object, removeMeshTransformation = false) {
         /**
          * @param {THREE.Object3D}
+         * @param {Boolean} removeMeshTransformation
          * @returns {Array<THREE.Mesh>}
          * @returns {Array} if the object is not instance of THREE.Object3D
-         * @description Returns all meshes of the object with un grouping them
+         * @description Returns all meshes of the object with un grouping them. If removeMeshTransformation is true, the transformation of the mesh is removed and applied to the geometry
          * @warning This function may not work properly if the object is non-uniformly scaled
          * 
          */
@@ -281,6 +282,18 @@ class Object3DUtils {
                 dummyParent.remove(mesh);
             })
 
+        }
+        // Remove mesh transformation and apply it to the geometry
+        if (removeMeshTransformation) {
+            meshes.forEach((mesh) => {
+                let wMat = mesh.matrixWorld
+                let geo = mesh.geometry
+                geo.applyMatrix4(wMat)
+
+                mesh.position.set(0, 0, 0)
+                mesh.rotation.set(0, 0, 0)
+                mesh.scale.set(1, 1, 1)
+            })
         }
         return meshes;
 

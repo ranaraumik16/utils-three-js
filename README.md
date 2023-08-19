@@ -55,7 +55,7 @@ const facePoints    = BufferGeoUtils.getFacePoints(geometry,10)
 | Method                   | Description                                                          | Parameters                                 | Returns                   |
 |--------------------------|----------------------------------------------------------------------|--------------------------------------------|--------------------------|
 | `getAllMeshes`           | Returns all meshes of the given object.                              | `object` (THREE.Object3D)                  | `Array[THREE.Mesh]`      |
-| `unGroupAllMeshes`       | Un-groups all meshes of the given object.(Scaling may not work)      | `object` (THREE.Object3D)                  | `Array[THREE.Mesh]`      |
+| `unGroupAllMeshes`       | Un-groups all meshes of the given object.(Scaling may not work) If removeMeshTransformation is true, the transformation of the mesh is removed and applied to the geometry      | `object` (THREE.Object3D), `removeMeshTransformation` (Boolean) (default value is false) | `Array[THREE.Mesh]`      |
 | `getBoundingBox`         | Returns the bounding box of the object.                              | `object` (THREE.Object3D), `inLocalSpace` (Boolean) (Optional)(default value is false)  | `THREE.Box3`    |
 | `getClassInstanceObjects`| Returns all objects of the object with the given class.              | `object` (THREE.Object3D), `objectClass` (any)  | `Array<objectClass>`  |
 | `isObject`               | Checks if the given object is an instance of THREE.Object3D.         | `object` (THREE.Object3D)                  | `Boolean`                |
