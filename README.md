@@ -50,7 +50,8 @@ const facePoints    = BufferGeoUtils.getFacePoints(geometry,10)
 | `getPoint`               | Returns the point at the given index.                                | `geometry` (THREE.BufferGeometry), `index` (Number) | `THREE.Vector3`           |
 | `getFacePointIndices`    | Returns the indices of the points of the face at the given index.    | `geometry` (THREE.BufferGeometry), `faceIndex` (Number) | `Array[Number]`           |
 | `getFacePoints`          | Returns the points of the face at the given index.                   | `geometry` (THREE.BufferGeometry), `faceIndex` (Number) | `Array[THREE.Vector3]`    |
-
+| `getTriangleArea`        | Returns the area of the triangle with the given points.              | `p1` (THREE.Vector3), `p2` (THREE.Vector3), `p3` (THREE.Vector3) | `Number` |
+| `getSurfaceArea`         | Returns the surface area of the geometry.                            | `geometry` (THREE.BufferGeometry)           | `Number`                 |
 `Object3DUtils`
 | Method                   | Description                                                          | Parameters                                 | Returns                   |
 |--------------------------|----------------------------------------------------------------------|--------------------------------------------|--------------------------|

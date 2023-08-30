@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { Face } from 'three/examples/jsm/math/ConvexHull.js';
+import { VertexNode } from 'three/examples/jsm/math/ConvexHull.js';
 
 class BufferGeoUtils {
     constructor(inGeometry) {
@@ -194,6 +196,46 @@ class BufferGeoUtils {
         }
 
         return points;
+    }
+
+    static getSurfaceArea(geometry) {
+        /**
+         * @param {THREE.BufferGeometry} geometry
+         * @returns {Number}
+         * @returns {undefined} if the geometry is not a buffer geometry
+         * @description Returns the surface area of the geometry
+         */
+
+        if (!BufferGeoUtils.isBufferGeometry(geometry)) {
+            console.warn('Not a buffer geometry');
+            return undefined
+        }
+
+        let area = 0;
+        let numberOfFaces = BufferGeoUtils.getNumberOfFaces(geometry);
+
+        for (let i = 0; i < numberOfFaces; i++) {
+            let points = BufferGeoUtils.getFacePoints(geometry, i);
+            area += BufferGeoUtils.getTriangleArea(points[0], points[1], points[2]);
+        }
+
+        return area;
+    }
+    static getTriangleArea(p1, p2, p3) {
+        /**
+         * @param {THREE.Vector3} p1
+         * @param {THREE.Vector3} p2
+         * @param {THREE.Vector3} p3
+         * @returns {Number}
+         * @description Returns the area of the triangle with the given points
+         */
+
+        let VertexNode1 = new VertexNode(p1);
+        let VertexNode2 = new VertexNode(p2);
+        let VertexNode3 = new VertexNode(p3);
+
+        let face = Face.create(VertexNode1, VertexNode2, VertexNode3);
+        return face.area
     }
 }
 
