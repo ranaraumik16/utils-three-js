@@ -395,25 +395,25 @@ class Object3DUtils {
 
         let geometry = inMesh.geometry;
 
-        if (geometry !== undefined) {
+        if (geometry != undefined) {
             geometry.dispose();
         }
 
         let material = inMesh.material;
 
-        if (material !== undefined) {
+        if (material != undefined) {
             material.dispose();
 
             // Dispose textures
-            if (material.map !== null) material.map.dispose();
-            if (material.aoMap !== null) material.aoMap.dispose();
-            if (material.emissiveMap !== null) material.emissiveMap.dispose();
-            if (material.bumpMap !== null) material.bumpMap.dispose();
-            if (material.normalMap !== null) material.normalMap.dispose();
-            if (material.displacementMap !== null) material.displacementMap.dispose();
-            if (material.roughnessMap !== null) material.roughnessMap.dispose();
-            if (material.metalnessMap !== null) material.metalnessMap.dispose();
-            if (material.alphaMap !== null) material.alphaMap.dispose();
+            if (material.map != null) material.map.dispose();
+            if (material.aoMap != null) material.aoMap.dispose();
+            if (material.emissiveMap != null) material.emissiveMap.dispose();
+            if (material.bumpMap != null) material.bumpMap.dispose();
+            if (material.normalMap != null) material.normalMap.dispose();
+            if (material.displacementMap != null) material.displacementMap.dispose();
+            if (material.roughnessMap != null) material.roughnessMap.dispose();
+            if (material.metalnessMap != null) material.metalnessMap.dispose();
+            if (material.alphaMap != null) material.alphaMap.dispose();
         }
         inMesh.parent.remove(inMesh);
         return true;
