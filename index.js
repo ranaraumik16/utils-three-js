@@ -243,7 +243,9 @@ class Object3DUtils {
     static throwError(message) {
         throw new Error(message);
     }
-
+    static throwWarning(message) {
+        console.warn(message);
+    }
     static isObject(object) {
         /**
          * @param {THREE.Object3D} object
@@ -380,6 +382,66 @@ class Object3DUtils {
         });
         return objects;
     }
+    static deleteMeshWithData(inMesh) {
+        /**
+         * @param {THREE.Mesh} inMesh
+         * @description Deletes the mesh and its geometry, material, textures if they are not used by any other mesh
+         * @warning This function delete geometry, material, textures of the mesh, make sure that they are not used by any other mesh
+         */
+        if (!inMesh.isMesh) {
+            this.throwWarning('Not a mesh');
+            return
+        }
+
+        let geometry = inMesh.geometry;
+
+        if (geometry !== undefined) {
+            geometry.dispose();
+        }
+
+        let material = inMesh.material;
+
+        if (material !== undefined) {
+            material.dispose();
+
+            // Dispose textures
+            if (material.map !== null) material.map.dispose();
+            if (material.aoMap !== null) material.aoMap.dispose();
+            if (material.emissiveMap !== null) material.emissiveMap.dispose();
+            if (material.bumpMap !== null) material.bumpMap.dispose();
+            if (material.normalMap !== null) material.normalMap.dispose();
+            if (material.displacementMap !== null) material.displacementMap.dispose();
+            if (material.roughnessMap !== null) material.roughnessMap.dispose();
+            if (material.metalnessMap !== null) material.metalnessMap.dispose();
+            if (material.alphaMap !== null) material.alphaMap.dispose();
+        }
+        inMesh.parent.remove(inMesh);
+        return true;
+    }
+
+    static deleteObjectWithData(inObject) {
+        /**
+         * @param {THREE.Object3D}
+         * @description Deletes the object and its geometry, material, textures
+         * @warning This function delete geometry, material, textures of the mesh, make sure that they are not used by any other mesh
+         * @description It releases the memory of the object and its children
+         */
+        if (!inObject.isObject3D) {
+            this.throwWarning('Not an object');
+            return
+        }
+
+        for (let i = inObject.children.length - 1; i >= 0; i--) {
+            let child = inObject.children[i];
+            if (child.isMesh) {
+                Object3DUtils.deleteMeshWithData(child);
+            } else {
+                Object3DUtils.deleteObjectWithData(child);
+            }
+        }
+        return true;
+    }
+
 }
 
 export { BufferGeoUtils, Object3DUtils };

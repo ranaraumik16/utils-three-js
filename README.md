@@ -52,11 +52,14 @@ const facePoints    = BufferGeoUtils.getFacePoints(geometry,10)
 | `getFacePoints`          | Returns the points of the face at the given index.                   | `geometry` (THREE.BufferGeometry), `faceIndex` (Number) | `Array[THREE.Vector3]`    |
 | `getTriangleArea`        | Returns the area of the triangle with the given points.              | `p1` (THREE.Vector3), `p2` (THREE.Vector3), `p3` (THREE.Vector3) | `Number` |
 | `getSurfaceArea`         | Returns the surface area of the geometry.                            | `geometry` (THREE.BufferGeometry)           | `Number`                 |
+
 `Object3DUtils`
 | Method                   | Description                                                          | Parameters                                 | Returns                   |
 |--------------------------|----------------------------------------------------------------------|--------------------------------------------|--------------------------|
 | `getAllMeshes`           | Returns all meshes of the given object.                              | `object` (THREE.Object3D)                  | `Array[THREE.Mesh]`      |
 | `unGroupAllMeshes`       | Un-groups all meshes of the given object.(Scaling may not work) If removeMeshTransformation is true, the transformation of the mesh is removed and applied to the geometry      | `object` (THREE.Object3D), `removeMeshTransformation` (Boolean) (default value is false) | `Array[THREE.Mesh]`      |
+| `deleteMeshWithData`      | Deletes the mesh and its geometry, material, textures    | `mesh` (THREE.Mesh) | `Boolean`      |
+| `deleteObjectWithData`    | Deletes the object and its geometry, material, textures. warning - make sure that they are not used by any other mesh    | `object` (THREE.Object3D) | `Boolean`      |
 | `getBoundingBox`         | Returns the bounding box of the object.                              | `object` (THREE.Object3D), `inLocalSpace` (Boolean) (Optional)(default value is false)  | `THREE.Box3`    |
 | `getClassInstanceObjects`| Returns all objects of the object with the given class.              | `object` (THREE.Object3D), `objectClass` (any)  | `Array<objectClass>`  |
 | `isObject`               | Checks if the given object is an instance of THREE.Object3D.         | `object` (THREE.Object3D)                  | `Boolean`                |
