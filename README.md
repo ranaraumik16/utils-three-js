@@ -64,6 +64,12 @@ const facePoints    = BufferGeoUtils.getFacePoints(geometry,10)
 | `getClassInstanceObjects`| Returns all objects of the object with the given class.              | `object` (THREE.Object3D), `objectClass` (any)  | `Array<objectClass>`  |
 | `isObject`               | Checks if the given object is an instance of THREE.Object3D.         | `object` (THREE.Object3D)                  | `Boolean`                |
 | `isMesh`                 | Checks if the given object is an instance of THREE.Mesh.             | `object` (THREE.Object3D)                  | `Boolean`                |
+
+`UtilsMath`
+| Method                   | Description                                                          | Parameters                                 | Returns                   |
+|--------------------------|----------------------------------------------------------------------|--------------------------------------------|--------------------------|
+| `removeFloatingPointError`| Removes the floating point error of the given value.                 | `value` (Number), `decimals` (Number) (Optional)(default value is 2) | `Number` |
+| `removeFloatingPointErrorVec3`| Removes the floating point error of the given vector.                 | `inVec` (THREE.Vector3), `inDecimals` (Number) (Optional)(default value is 2) | `THREE.Vector3` |
 ## License
 
 This project is licensed under the MIT License.

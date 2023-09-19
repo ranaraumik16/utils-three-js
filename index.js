@@ -135,7 +135,7 @@ class BufferGeoUtils {
          */
 
         if (!BufferGeoUtils.isBufferGeometry(geometry)) this.throwError('Not a buffer geometry')
-        
+
         let attribute = geometry.getAttribute('position');
 
         // Check if index is in range
@@ -366,7 +366,7 @@ class Object3DUtils {
         return boundingBox;
     }
 
-    static getClassInstanceObjects(object, objectClass) { 
+    static getClassInstanceObjects(object, objectClass) {
         /**
          * @param {THREE.Object3D} object
          * @param {any} objectClass
@@ -444,4 +444,41 @@ class Object3DUtils {
 
 }
 
-export { BufferGeoUtils, Object3DUtils };
+class UtilsMath {
+    static throwError(message) {
+        throw new Error(message);
+    }
+    static throwWarning(message) {
+        console.warn(message);
+    }
+    static removeFloatingPointError(value, decimals = 2) {
+        /**
+         * @param {Number} value
+         * @param {Number} decimals
+         * @returns {Number}
+         * @description Removes the floating point error of the given value
+         */
+        let multiplier = Math.pow(10, decimals || 0);
+        return Math.round(value * multiplier) / multiplier;
+    }
+    static removeFloatingPointErrorVec3(inVec, inDecimals = 2) {
+        /**
+         * @param {THREE.Vector3} inVec
+         * @param {Number} inDecimals
+         * @returns {THREE.Vector3}
+         * @description Removes the floating point error of the given vector
+         */
+
+        if(!inVec.isVector3) {
+            this.throwWarning('Not a vector');
+            return inVec
+        }
+        
+        let x = this.removeFloatingPointError(inVec.x, inDecimals)
+        let y = this.removeFloatingPointError(inVec.y, inDecimals)
+        let z = this.removeFloatingPointError(inVec.z, inDecimals)
+        return new THREE.Vector3(x, y, z)
+    }
+}
+
+export { BufferGeoUtils, Object3DUtils, UtilsMath };
