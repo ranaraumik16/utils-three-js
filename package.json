@@ -1,6 +1,6 @@
 {
   "name": "utils-three-js",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "This module helps to build three-js application",
   "type": "module",
   "main": "index.js",
@@ -22,6 +22,6 @@
   "author": "Raumik Rana",
   "license": "MIT",
   "dependencies": {
-    "three": "^0.155.0"
+    "three": ">=0.140.0"
   }
 }
