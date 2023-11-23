@@ -388,7 +388,7 @@ class Object3DUtils {
          * @description Deletes the mesh and its geometry, material, textures if they are not used by any other mesh
          * @warning This function delete geometry, material, textures of the mesh, make sure that they are not used by any other mesh
          */
-        if (!inMesh.isMesh) {
+        if (!inMesh || !inMesh.isMesh) {
             this.throwWarning('Not a mesh');
             return
         }
@@ -426,7 +426,7 @@ class Object3DUtils {
          * @warning This function delete geometry, material, textures of the mesh, make sure that they are not used by any other mesh
          * @description It releases the memory of the object and its children
          */
-        if (!inObject.isObject3D) {
+        if (!inObject || !inObject.isObject3D) {
             this.throwWarning('Not an object');
             return
         }
